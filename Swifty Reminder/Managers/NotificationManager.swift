@@ -69,6 +69,29 @@ enum NotificationManager {
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [identifier(for: reminder)])
     }
 
+    /// Schedules the alert for when a running timer ends, replacing any earlier one for it.
+    static func scheduleTimerNotification(for timer: CountdownTimer) {
+        guard let endDate = timer.endDate else { return }
+        let secondsLeft = endDate.timeIntervalSinceNow
+        guard secondsLeft > 0 else { return }
+
+        let content = UNMutableNotificationContent()
+        content.title = "⏰ " + (timer.label.isEmpty ? "Time's up!" : timer.label)
+        content.body = spookyLines.randomElement() ?? ""
+        if let sound = spookySounds.randomElement() {
+            content.sound = UNNotificationSound(named: UNNotificationSoundName(sound))
+        }
+
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: secondsLeft, repeats: false)
+        let request = UNNotificationRequest(identifier: timer.notificationIdentifier,
+                                            content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request)
+    }
+
+    static func cancelTimerNotification(for timer: CountdownTimer) {
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [timer.notificationIdentifier])
+    }
+
     private static func identifier(for reminder: Reminder) -> String {
         reminder.objectID.uriRepresentation().absoluteString
     }
@@ -93,5 +116,17 @@ enum NotificationManager {
             fireDate = calendar.date(byAdding: .day, value: 1, to: fireDate) ?? fireDate
         }
         return fireDate > now ? fireDate : nil
+    }
+}
+
+/// Lets reminder and timer alerts show up while the app is open too;
+/// by default iOS only shows notifications when the app is in the background.
+final class NotificationPresenter: NSObject, UNUserNotificationCenterDelegate {
+    static let shared = NotificationPresenter()
+
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.banner, .list, .sound])
     }
 }

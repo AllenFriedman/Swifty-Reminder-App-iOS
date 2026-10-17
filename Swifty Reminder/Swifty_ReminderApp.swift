@@ -11,6 +11,9 @@ import UserNotifications
 @main
 struct Swifty_ReminderApp: App {
     init() {
+        // Show reminder and timer alerts even while the app is open
+        UNUserNotificationCenter.current().delegate = NotificationPresenter.shared
+
         // Schedule the request with the system.
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
 

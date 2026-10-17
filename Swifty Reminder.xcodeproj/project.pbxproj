@@ -42,6 +42,9 @@
 		5CF0A1002EF000000000000B /* BatFlightPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF0A1002EF000000000000A /* BatFlightPath.swift */; };
 		5CF0A1002EF000000000000D /* BatFlight in Resources */ = {isa = PBXBuildFile; fileRef = 5CF0A1002EF000000000000C /* BatFlight */; };
 		5CF0A1002EF000000000000F /* RemindersSyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF0A1002EF000000000000E /* RemindersSyncManager.swift */; };
+		5CF0A1002EF0000000000012 /* CountdownTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF0A1002EF0000000000011 /* CountdownTimer.swift */; };
+		5CF0A1002EF0000000000014 /* TimerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF0A1002EF0000000000013 /* TimerStore.swift */; };
+		5CF0A1002EF0000000000016 /* TimersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF0A1002EF0000000000015 /* TimersView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +104,9 @@
 		5CF0A1002EF000000000000C /* BatFlight */ = {isa = PBXFileReference; lastKnownFileType = folder; path = BatFlight; sourceTree = "<group>"; };
 		5CF0A1002EF000000000000E /* RemindersSyncManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersSyncManager.swift; sourceTree = "<group>"; };
 		5CF0A1002EF0000000000010 /* RemindersModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "RemindersModel 2.xcdatamodel"; sourceTree = "<group>"; };
+		5CF0A1002EF0000000000011 /* CountdownTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimer.swift; sourceTree = "<group>"; };
+		5CF0A1002EF0000000000013 /* TimerStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerStore.swift; sourceTree = "<group>"; };
+		5CF0A1002EF0000000000015 /* TimersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimersView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +198,7 @@
 				5C581F5A2AB5CD3F006F94D1 /* MyList+CoreDataProperties.swift */,
 				5C6D133E2AC894B00084615A /* ReminderStatsBuilder.swift */,
 				5CF0A1002EF000000000000A /* BatFlightPath.swift */,
+				5CF0A1002EF0000000000011 /* CountdownTimer.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -211,6 +218,7 @@
 				5C581F5D2AB5D124006F94D1 /* AddNewListView.swift */,
 				5C581F5F2AB5F331006F94D1 /* ColorPickerView.swift */,
 				5CF0A1002EF0000000000008 /* BatFlyoverView.swift */,
+				5CF0A1002EF0000000000015 /* TimersView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -245,6 +253,7 @@
 			children = (
 				5CAB3A082ACF143700634047 /* NotificationManager.swift */,
 				5CF0A1002EF000000000000E /* RemindersSyncManager.swift */,
+				5CF0A1002EF0000000000013 /* TimerStore.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -437,6 +446,9 @@
 				5C581F702AB8ACDC006F94D1 /* ReminderListView.swift in Sources */,
 				5CAB3A092ACF143700634047 /* NotificationManager.swift in Sources */,
 				5CF0A1002EF000000000000F /* RemindersSyncManager.swift in Sources */,
+				5CF0A1002EF0000000000012 /* CountdownTimer.swift in Sources */,
+				5CF0A1002EF0000000000014 /* TimerStore.swift in Sources */,
+				5CF0A1002EF0000000000016 /* TimersView.swift in Sources */,
 				5C581F682AB73B50006F94D1 /* MyListView.swift in Sources */,
 				5C581F632AB731A0006F94D1 /* ReminderService.swift in Sources */,
 			);

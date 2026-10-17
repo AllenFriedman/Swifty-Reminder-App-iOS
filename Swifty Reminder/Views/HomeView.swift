@@ -82,6 +82,12 @@ struct HomeView: View {
                             .frame(maxWidth: .infinity, alignment: .trailing)
                             .font(.headline)
                     }.padding()
+
+                    NavigationLink {
+                        TimersView()
+                    } label: {
+                        ReminderStatsView(icon: "timer", title: "Timers", count: nil, iconColor: .pumpkin)
+                    }
                 }
             }
             .sheet(isPresented: $isPresented) {
