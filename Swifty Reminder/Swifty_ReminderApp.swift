@@ -42,6 +42,7 @@ struct Swifty_ReminderApp: App {
             HomeView()
                 .environment(\.managedObjectContext, CoreDataProvider.shared.persistentContainer.viewContext)
                 .overlay { BatFlyoverView() }
+                .overlay { WitchBubbleView() }
                 .overlay { SpiritSummonView() }
                 .preferredColorScheme(.dark)
                 .tint(Color.pumpkin)

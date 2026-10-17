@@ -44,9 +44,12 @@ struct MyListDetailView: View {
                 if isFormValid {
                     do {
                         try ReminderService.saveReminderToMyList(myList: myList, reminderTitle: title)
+                        WitchTaunter.shared.react(to: .reminderAdded(title: title, listName: myList.name))
                     } catch {
                         print(error.localizedDescription)
                     }
+                    // Start the next one blank
+                    title = ""
                 }
             }
         }

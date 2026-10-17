@@ -55,6 +55,9 @@
 		5CF0A1002EF0000000000029 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB8E0B12B63E26100859405 /* Color+Extensions.swift */; };
 		5CF0A1002EF000000000002A /* WidgetUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF0A1002EF0000000000023 /* WidgetUpdater.swift */; };
 		5CF0A1002EF000000000002B /* SpookyWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5CF0A1002EF000000000001D /* SpookyWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5CF0A1002EF0000000000037 /* GemmaClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF0A1002EF0000000000036 /* GemmaClient.swift */; };
+		5CF0A1002EF0000000000039 /* WitchTaunter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF0A1002EF0000000000038 /* WitchTaunter.swift */; };
+		5CF0A1002EF000000000003B /* WitchBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF0A1002EF000000000003A /* WitchBubbleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -148,6 +151,9 @@
 		5CF0A1002EF0000000000021 /* Swifty Reminder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Swifty Reminder.entitlements"; sourceTree = "<group>"; };
 		5CF0A1002EF0000000000022 /* WidgetSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSnapshot.swift; sourceTree = "<group>"; };
 		5CF0A1002EF0000000000023 /* WidgetUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetUpdater.swift; sourceTree = "<group>"; };
+		5CF0A1002EF0000000000036 /* GemmaClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemmaClient.swift; sourceTree = "<group>"; };
+		5CF0A1002EF0000000000038 /* WitchTaunter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WitchTaunter.swift; sourceTree = "<group>"; };
+		5CF0A1002EF000000000003A /* WitchBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WitchBubbleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -274,6 +280,7 @@
 				5CF0A1002EF0000000000017 /* PumpkinView.swift */,
 				5CF0A1002EF0000000000019 /* HauntedReminder.swift */,
 				5CF0A1002EF000000000001B /* SpiritSummonView.swift */,
+				5CF0A1002EF000000000003A /* WitchBubbleView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -310,6 +317,8 @@
 				5CF0A1002EF000000000000E /* RemindersSyncManager.swift */,
 				5CF0A1002EF0000000000013 /* TimerStore.swift */,
 				5CF0A1002EF0000000000023 /* WidgetUpdater.swift */,
+				5CF0A1002EF0000000000036 /* GemmaClient.swift */,
+				5CF0A1002EF0000000000038 /* WitchTaunter.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -550,6 +559,9 @@
 				5CF0A1002EF000000000001C /* SpiritSummonView.swift in Sources */,
 				5CF0A1002EF0000000000027 /* WidgetSnapshot.swift in Sources */,
 				5CF0A1002EF000000000002A /* WidgetUpdater.swift in Sources */,
+				5CF0A1002EF0000000000037 /* GemmaClient.swift in Sources */,
+				5CF0A1002EF0000000000039 /* WitchTaunter.swift in Sources */,
+				5CF0A1002EF000000000003B /* WitchBubbleView.swift in Sources */,
 				5C581F682AB73B50006F94D1 /* MyListView.swift in Sources */,
 				5C581F632AB731A0006F94D1 /* ReminderService.swift in Sources */,
 			);

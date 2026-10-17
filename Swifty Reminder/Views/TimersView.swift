@@ -39,6 +39,7 @@ struct TimersView: View {
 
                 Button {
                     store.start(label: label, duration: duration)
+                    WitchTaunter.shared.react(to: .timerStarted(label: label, minutes: Int(duration / 60)))
                     label = ""
                 } label: {
                     Label("Start", systemImage: "play.fill")

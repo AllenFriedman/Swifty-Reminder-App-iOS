@@ -96,6 +96,7 @@ struct HomeView: View {
                     AddNewListView { name, color in
                         do {
                             try ReminderService.saveMyList(name, color)
+                            WitchTaunter.shared.react(to: .listCreated(name: name))
                         } catch {
                             print(error)
                         }
