@@ -28,7 +28,7 @@ struct ReminderDetailView: View {
                     Section {
                         Toggle(isOn: $editConfig.hasDate) {
                             Image(systemName: "calendar")
-                                .foregroundColor(.red)
+                                .foregroundColor(.pumpkin)
                         }
                         
                         if editConfig.hasDate {
@@ -37,7 +37,7 @@ struct ReminderDetailView: View {
                         
                         Toggle(isOn: $editConfig.hasTime) {
                             Image(systemName: "clock")
-                                .foregroundColor(.blue)
+                                .foregroundColor(.candleGlow)
                         }
                         
                         if editConfig.hasTime {
@@ -65,12 +65,14 @@ struct ReminderDetailView: View {
                         }
                     }
                 }.listStyle(.insetGrouped)
+                    .tint(Color.pumpkin)
             }.onAppear {
                 editConfig = ReminderEditConfig(reminder: reminder)
             }
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     Text("Details")
+                        .foregroundColor(.pumpkin)
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {

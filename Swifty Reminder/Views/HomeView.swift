@@ -41,13 +41,13 @@ struct HomeView: View {
                         NavigationLink {
                             ReminderListView(reminders: todayResults)
                         } label: {
-                            ReminderStatsView(icon: "calendar", title: "Today", count: reminderStatsValues.todayCount, iconColor: .red)
+                            ReminderStatsView(icon: "calendar", title: "Today", count: reminderStatsValues.todayCount, iconColor: .pumpkin)
                         }
                         
                         NavigationLink {
                             ReminderListView(reminders: scheduledResults)
                         } label: {
-                            ReminderStatsView(icon: "calendar.badge.exclamationmark", title: "Scheduled", count: reminderStatsValues.scheduledCount, iconColor: .blue)
+                            ReminderStatsView(icon: "calendar.badge.exclamationmark", title: "Scheduled", count: reminderStatsValues.scheduledCount, iconColor: .candleGlow)
                         }
                     }
                     
@@ -56,13 +56,13 @@ struct HomeView: View {
                             ReminderListView(reminders: allResults)
                             
                         } label: {
-                            ReminderStatsView(icon: "tray.circle.fill", title: "All", count: reminderStatsValues.allCount, iconColor: .orange)
+                            ReminderStatsView(icon: "tray.circle.fill", title: "All", count: reminderStatsValues.allCount, iconColor: .ember)
                         }
                         
                         NavigationLink {
                             ReminderListView(reminders: completedResults)
                         } label: {
-                            ReminderStatsView(icon: "checkmark.circle.fill", title: "Completed", count: reminderStatsValues.completedCount, iconColor: .green)
+                            ReminderStatsView(icon: "checkmark.circle.fill", title: "Completed", count: reminderStatsValues.completedCount, iconColor: .boneWhite)
                         }
                     }
                     
@@ -70,6 +70,7 @@ struct HomeView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .font(.largeTitle)
                         .bold()
+                        .foregroundColor(.pumpkin)
                         .padding()
                     
                     MyListView(myLists: myListResults)
@@ -107,6 +108,7 @@ struct HomeView: View {
                 reminderStatsValues = reminderStats.build(myListResults: myListResults)
             }
             .padding()
+            .background(Color.midnight.ignoresSafeArea())
             .navigationTitle("Reminders")
         }.searchable(text: $search)
     }

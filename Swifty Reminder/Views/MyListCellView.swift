@@ -17,8 +17,8 @@ struct MyListCellView: View {
             Text(myList.name)
             Spacer()
             Image(systemName: "chevron.right")
-                .foregroundColor(.gray)
-                .opacity(0.4)
+                .foregroundColor(.pumpkin)
+                .opacity(0.6)
                 .padding([.trailing], 10)
         }
     }

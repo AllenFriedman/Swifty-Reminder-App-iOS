@@ -34,7 +34,7 @@ struct MyListDetailView: View {
                 Button("New Reminder") {
                     openAddReminder = true
                 }
-            }.foregroundColor(.blue)
+            }.foregroundColor(.pumpkin)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding()
         }.alert("New Reminder", isPresented: $openAddReminder) {

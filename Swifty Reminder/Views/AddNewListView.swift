@@ -10,7 +10,7 @@ import SwiftUI
 struct AddNewListView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var name: String = ""
-    @State private var selectedColor: Color = .yellow
+    @State private var selectedColor: Color = .pumpkin
     
     let onSave: (String, UIColor) -> Void
     
@@ -35,10 +35,12 @@ struct AddNewListView: View {
             
             Spacer()
         }.frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color.midnight.ignoresSafeArea())
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     Text("New List")
                         .font(.headline)
+                        .foregroundColor(.pumpkin)
                 }
                 
                 ToolbarItem(placement: .navigationBarLeading) {

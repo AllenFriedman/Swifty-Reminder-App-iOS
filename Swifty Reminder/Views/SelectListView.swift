@@ -29,6 +29,7 @@ struct SelectListView: View {
 
                 if selectedList == myList {
                     Image(systemName: "checkmark")
+                        .foregroundColor(.pumpkin)
                 }
             }
         }
