@@ -38,6 +38,9 @@
 		5CF0A1002EF0000000000003 /* witch_laugh.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5CF0A1002EF0000000000002 /* witch_laugh.wav */; };
 		5CF0A1002EF0000000000005 /* dracula.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5CF0A1002EF0000000000004 /* dracula.wav */; };
 		5CF0A1002EF0000000000007 /* scream.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5CF0A1002EF0000000000006 /* scream.wav */; };
+		5CF0A1002EF0000000000009 /* BatFlyoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF0A1002EF0000000000008 /* BatFlyoverView.swift */; };
+		5CF0A1002EF000000000000B /* BatFlightPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF0A1002EF000000000000A /* BatFlightPath.swift */; };
+		5CF0A1002EF000000000000D /* BatFlight in Resources */ = {isa = PBXBuildFile; fileRef = 5CF0A1002EF000000000000C /* BatFlight */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +95,9 @@
 		5CF0A1002EF0000000000002 /* witch_laugh.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = witch_laugh.wav; sourceTree = "<group>"; };
 		5CF0A1002EF0000000000004 /* dracula.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = dracula.wav; sourceTree = "<group>"; };
 		5CF0A1002EF0000000000006 /* scream.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = scream.wav; sourceTree = "<group>"; };
+		5CF0A1002EF0000000000008 /* BatFlyoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatFlyoverView.swift; sourceTree = "<group>"; };
+		5CF0A1002EF000000000000A /* BatFlightPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatFlightPath.swift; sourceTree = "<group>"; };
+		5CF0A1002EF000000000000C /* BatFlight */ = {isa = PBXFileReference; lastKnownFileType = folder; path = BatFlight; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +157,7 @@
 				5C581F272AB47EB1006F94D1 /* Swifty_ReminderApp.swift */,
 				5C581F2B2AB47EB3006F94D1 /* Assets.xcassets */,
 				5CF0A1002EF0000000000001 /* Sounds */,
+				5CF0A1002EF000000000000C /* BatFlight */,
 				5C581F2D2AB47EB3006F94D1 /* Preview Content */,
 				5C581F542AB58E52006F94D1 /* RemindersModel.xcdatamodeld */,
 			);
@@ -181,6 +188,7 @@
 				5C581F582AB5CD15006F94D1 /* MyList+CoreDataClass.swift */,
 				5C581F5A2AB5CD3F006F94D1 /* MyList+CoreDataProperties.swift */,
 				5C6D133E2AC894B00084615A /* ReminderStatsBuilder.swift */,
+				5CF0A1002EF000000000000A /* BatFlightPath.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -199,6 +207,7 @@
 				5C581F672AB73B50006F94D1 /* MyListView.swift */,
 				5C581F5D2AB5D124006F94D1 /* AddNewListView.swift */,
 				5C581F5F2AB5F331006F94D1 /* ColorPickerView.swift */,
+				5CF0A1002EF0000000000008 /* BatFlyoverView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -372,6 +381,7 @@
 				5CF0A1002EF0000000000003 /* witch_laugh.wav in Resources */,
 				5CF0A1002EF0000000000005 /* dracula.wav in Resources */,
 				5CF0A1002EF0000000000007 /* scream.wav in Resources */,
+				5CF0A1002EF000000000000D /* BatFlight in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,6 +408,8 @@
 			files = (
 				5C581F6A2AB73D29006F94D1 /* MyListCellView.swift in Sources */,
 				5C581F602AB5F331006F94D1 /* ColorPickerView.swift in Sources */,
+				5CF0A1002EF0000000000009 /* BatFlyoverView.swift in Sources */,
+				5CF0A1002EF000000000000B /* BatFlightPath.swift in Sources */,
 				5C6D13412AC9D3610084615A /* ReminderStatsView.swift in Sources */,
 				5C581F742AB8B02D006F94D1 /* ReminderCellView.swift in Sources */,
 				5CBC89A72AB9C39F0031A884 /* UIColorTransformer.swift in Sources */,
