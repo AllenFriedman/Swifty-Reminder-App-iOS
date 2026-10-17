@@ -25,6 +25,13 @@ enum NotificationManager {
         "Something is lurking on your to-do list...",
     ]
 
+    // Bundled in Sounds/; one is picked at random for each reminder
+    private static let spookySounds = [
+        "witch_laugh.wav",
+        "dracula.wav",
+        "scream.wav",
+    ]
+
     static func scheduleNotification(userData: UserData) {
         let content = UNMutableNotificationContent()
         content.title = "👻 " + (userData.title ?? "")
@@ -32,6 +39,9 @@ enum NotificationManager {
             content.body = body
         } else {
             content.body = spookyLines.randomElement() ?? ""
+        }
+        if let sound = spookySounds.randomElement() {
+            content.sound = UNNotificationSound(named: UNNotificationSoundName(sound))
         }
         
         var dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: userData.date ?? Date())

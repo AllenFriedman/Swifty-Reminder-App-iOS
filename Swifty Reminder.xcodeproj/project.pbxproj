@@ -35,6 +35,9 @@
 		5CB8E0B22B63E26100859405 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB8E0B12B63E26100859405 /* Color+Extensions.swift */; };
 		5CBC89A72AB9C39F0031A884 /* UIColorTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBC89A62AB9C39F0031A884 /* UIColorTransformer.swift */; };
 		5CBC89AA2AB9C4110031A884 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBC89A92AB9C4110031A884 /* Date+Extensions.swift */; };
+		5CF0A1002EF0000000000003 /* witch_laugh.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5CF0A1002EF0000000000002 /* witch_laugh.wav */; };
+		5CF0A1002EF0000000000005 /* dracula.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5CF0A1002EF0000000000004 /* dracula.wav */; };
+		5CF0A1002EF0000000000007 /* scream.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5CF0A1002EF0000000000006 /* scream.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +89,9 @@
 		5CB8E0B12B63E26100859405 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		5CBC89A62AB9C39F0031A884 /* UIColorTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorTransformer.swift; sourceTree = "<group>"; };
 		5CBC89A92AB9C4110031A884 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		5CF0A1002EF0000000000002 /* witch_laugh.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = witch_laugh.wav; sourceTree = "<group>"; };
+		5CF0A1002EF0000000000004 /* dracula.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = dracula.wav; sourceTree = "<group>"; };
+		5CF0A1002EF0000000000006 /* scream.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = scream.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +150,7 @@
 				5C581F512AB49BEC006F94D1 /* Providers */,
 				5C581F272AB47EB1006F94D1 /* Swifty_ReminderApp.swift */,
 				5C581F2B2AB47EB3006F94D1 /* Assets.xcassets */,
+				5CF0A1002EF0000000000001 /* Sounds */,
 				5C581F2D2AB47EB3006F94D1 /* Preview Content */,
 				5C581F542AB58E52006F94D1 /* RemindersModel.xcdatamodeld */,
 			);
@@ -244,6 +251,16 @@
 				5CB8E0B12B63E26100859405 /* Color+Extensions.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		5CF0A1002EF0000000000001 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				5CF0A1002EF0000000000002 /* witch_laugh.wav */,
+				5CF0A1002EF0000000000004 /* dracula.wav */,
+				5CF0A1002EF0000000000006 /* scream.wav */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -352,6 +369,9 @@
 			files = (
 				5C581F2F2AB47EB3006F94D1 /* Preview Assets.xcassets in Resources */,
 				5C581F2C2AB47EB3006F94D1 /* Assets.xcassets in Resources */,
+				5CF0A1002EF0000000000003 /* witch_laugh.wav in Resources */,
+				5CF0A1002EF0000000000005 /* dracula.wav in Resources */,
+				5CF0A1002EF0000000000007 /* scream.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
