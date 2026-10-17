@@ -5,6 +5,7 @@
 //  Created by Mohammad Azam on 1/19/23.
 //
 
+import CoreData
 import SwiftUI
 
 struct HomeView: View {
@@ -116,6 +117,10 @@ struct HomeView: View {
             }
             .onReceive(NotificationCenter.default.publisher(for: .NSCalendarDayChanged).receive(on: RunLoop.main)) { _ in
                 todayResults.nsPredicate = ReminderService.remindersByStatType(statType: .today).predicate
+                reminderStatsValues = reminderStats.build(myListResults: myListResults)
+            }
+            // Keep the counts current when reminders change while this screen is showing
+            .onReceive(NotificationCenter.default.publisher(for: .NSManagedObjectContextDidSave).receive(on: RunLoop.main)) { _ in
                 reminderStatsValues = reminderStats.build(myListResults: myListResults)
             }
             .padding()

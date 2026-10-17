@@ -45,6 +45,9 @@
 		5CF0A1002EF0000000000012 /* CountdownTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF0A1002EF0000000000011 /* CountdownTimer.swift */; };
 		5CF0A1002EF0000000000014 /* TimerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF0A1002EF0000000000013 /* TimerStore.swift */; };
 		5CF0A1002EF0000000000016 /* TimersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF0A1002EF0000000000015 /* TimersView.swift */; };
+		5CF0A1002EF0000000000018 /* PumpkinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF0A1002EF0000000000017 /* PumpkinView.swift */; };
+		5CF0A1002EF000000000001A /* HauntedReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF0A1002EF0000000000019 /* HauntedReminder.swift */; };
+		5CF0A1002EF000000000001C /* SpiritSummonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF0A1002EF000000000001B /* SpiritSummonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +110,9 @@
 		5CF0A1002EF0000000000011 /* CountdownTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimer.swift; sourceTree = "<group>"; };
 		5CF0A1002EF0000000000013 /* TimerStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerStore.swift; sourceTree = "<group>"; };
 		5CF0A1002EF0000000000015 /* TimersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimersView.swift; sourceTree = "<group>"; };
+		5CF0A1002EF0000000000017 /* PumpkinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PumpkinView.swift; sourceTree = "<group>"; };
+		5CF0A1002EF0000000000019 /* HauntedReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HauntedReminder.swift; sourceTree = "<group>"; };
+		5CF0A1002EF000000000001B /* SpiritSummonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiritSummonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +225,9 @@
 				5C581F5F2AB5F331006F94D1 /* ColorPickerView.swift */,
 				5CF0A1002EF0000000000008 /* BatFlyoverView.swift */,
 				5CF0A1002EF0000000000015 /* TimersView.swift */,
+				5CF0A1002EF0000000000017 /* PumpkinView.swift */,
+				5CF0A1002EF0000000000019 /* HauntedReminder.swift */,
+				5CF0A1002EF000000000001B /* SpiritSummonView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -449,6 +458,9 @@
 				5CF0A1002EF0000000000012 /* CountdownTimer.swift in Sources */,
 				5CF0A1002EF0000000000014 /* TimerStore.swift in Sources */,
 				5CF0A1002EF0000000000016 /* TimersView.swift in Sources */,
+				5CF0A1002EF0000000000018 /* PumpkinView.swift in Sources */,
+				5CF0A1002EF000000000001A /* HauntedReminder.swift in Sources */,
+				5CF0A1002EF000000000001C /* SpiritSummonView.swift in Sources */,
 				5C581F682AB73B50006F94D1 /* MyListView.swift in Sources */,
 				5C581F632AB731A0006F94D1 /* ReminderService.swift in Sources */,
 			);

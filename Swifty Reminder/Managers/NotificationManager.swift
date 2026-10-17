@@ -26,6 +26,13 @@ enum NotificationManager {
         "scream.wav",
     ]
 
+    // Follow-ups after the reminder goes off, getting pushier while it stays unfinished
+    private static let nags: [(after: TimeInterval, title: String, body: String)] = [
+        (60 * 60, "👻 Still haunting you", "It's overdue. Do it before it gets worse..."),
+        (24 * 60 * 60, "👻👻 The ghost is getting restless", "A whole day overdue. Can you hear the chains rattling?"),
+        (3 * 24 * 60 * 60, "☠️ The spirits are furious", "Three days overdue! Finish it so it can rest in peace."),
+    ]
+
     /// Schedules the reminder's notification, replacing any earlier one for the same reminder.
     /// Removes it instead when the reminder is completed, has no date or time, or is in the past.
     static func updateNotification(for reminder: Reminder) {
@@ -34,9 +41,11 @@ enum NotificationManager {
 
         guard !reminder.isCompleted,
               let fireDate = fireDate(date: reminder.reminderDate, time: reminder.reminderTime) else {
-            notificationCenter.removePendingNotificationRequests(withIdentifiers: [identifier])
+            notificationCenter.removePendingNotificationRequests(withIdentifiers: identifiers(for: reminder))
             return
         }
+
+        scheduleNags(for: reminder, after: fireDate)
 
         let content = UNMutableNotificationContent()
         content.title = "👻 " + (reminder.title ?? "")
@@ -66,7 +75,29 @@ enum NotificationManager {
     }
 
     static func cancelNotification(for reminder: Reminder) {
-        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [identifier(for: reminder)])
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: identifiers(for: reminder))
+    }
+
+    private static func scheduleNags(for reminder: Reminder, after fireDate: Date) {
+        let base = identifier(for: reminder)
+        for (index, nag) in nags.enumerated() {
+            let content = UNMutableNotificationContent()
+            content.title = nag.title + ": " + (reminder.title ?? "")
+            content.body = nag.body
+            if let sound = spookySounds.randomElement() {
+                content.sound = UNNotificationSound(named: UNNotificationSoundName(sound))
+            }
+            let nagDate = fireDate.addingTimeInterval(nag.after)
+            let trigger = UNCalendarNotificationTrigger(dateMatching: nagDate.dateComponents, repeats: false)
+            let request = UNNotificationRequest(identifier: "\(base)-nag\(index + 1)", content: content, trigger: trigger)
+            UNUserNotificationCenter.current().add(request)
+        }
+    }
+
+    /// The reminder's own notification followed by its nags
+    private static func identifiers(for reminder: Reminder) -> [String] {
+        let base = identifier(for: reminder)
+        return [base] + nags.indices.map { "\(base)-nag\($0 + 1)" }
     }
 
     /// Schedules the alert for when a running timer ends, replacing any earlier one for it.

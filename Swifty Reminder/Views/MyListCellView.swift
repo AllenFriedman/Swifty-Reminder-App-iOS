@@ -12,8 +12,8 @@ struct MyListCellView: View {
 
     var body: some View {
         HStack {
-            Image(systemName: "line.3.horizontal.circle.fill")
-                .foregroundColor(Color(myList.color))
+            ListPumpkinIcon(myList: myList)
+                .frame(width: 34, height: 34)
             Text(myList.name)
             Spacer()
             Image(systemName: "chevron.right")
@@ -27,5 +27,6 @@ struct MyListCellView: View {
 struct MyListCellView_Previews: PreviewProvider {
     static var previews: some View {
         MyListCellView(myList: PreviewData.myList)
+            .environment(\.managedObjectContext, CoreDataProvider.shared.persistentContainer.viewContext)
     }
 }

@@ -21,9 +21,9 @@ struct AddNewListView: View {
     var body: some View {
         VStack {
             VStack {
-                Image(systemName: "line.3.horizontal.circle.fill")
-                    .foregroundColor(selectedColor)
-                    .font(.system(size: 100))
+                // A new list starts with nothing to do, so its pumpkin is lit
+                PumpkinBadge(color: selectedColor)
+                    .frame(width: 110, height: 110)
                 TextField("List Name", text: $name)
                     .multilineTextAlignment(.center)
                     .textFieldStyle(.roundedBorder)
