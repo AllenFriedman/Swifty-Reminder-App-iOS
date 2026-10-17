@@ -26,9 +26,9 @@ struct ReminderCellView: View {
     
     private func formatDate(_ date: Date) -> String {
         if date.isToday {
-            return "Today"
+            return "Tonight"
         } else if date.isTomorrow {
-            return "Tomorrow"
+            return "Tomorrow Night"
         } else {
             return date.formatted(date: .numeric, time: .omitted)
         }

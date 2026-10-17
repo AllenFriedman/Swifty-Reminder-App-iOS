@@ -24,7 +24,7 @@ struct AddNewListView: View {
                 Image(systemName: "line.3.horizontal.circle.fill")
                     .foregroundColor(selectedColor)
                     .font(.system(size: 100))
-                TextField("List Name", text: $name)
+                TextField("Cauldron Name", text: $name)
                     .multilineTextAlignment(.center)
                     .textFieldStyle(.roundedBorder)
             }
@@ -38,19 +38,19 @@ struct AddNewListView: View {
             .background(Color.midnight.ignoresSafeArea())
             .toolbar {
                 ToolbarItem(placement: .principal) {
-                    Text("New List")
+                    Text("New Cauldron")
                         .font(.headline)
                         .foregroundColor(.pumpkin)
                 }
                 
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Close") {
+                    Button("Flee") {
                         dismiss()
                     }
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Done") {
+                    Button("Brew") {
                         // save the list
                         onSave(name, UIColor(selectedColor))
                         

@@ -16,10 +16,23 @@ struct UserData {
 }
 
 enum NotificationManager {
+    // Used when a reminder has no notes of its own
+    private static let spookyLines = [
+        "The spirits say it's time...",
+        "Boo! Did you forget about this?",
+        "Don't keep the ghosts waiting.",
+        "The witching hour has arrived.",
+        "Something is lurking on your to-do list...",
+    ]
+
     static func scheduleNotification(userData: UserData) {
         let content = UNMutableNotificationContent()
-        content.title = userData.title ?? ""
-        content.body = userData.body ?? ""
+        content.title = "👻 " + (userData.title ?? "")
+        if let body = userData.body, !body.isEmpty {
+            content.body = body
+        } else {
+            content.body = spookyLines.randomElement() ?? ""
+        }
         
         var dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: userData.date ?? Date())
         

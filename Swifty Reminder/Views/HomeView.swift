@@ -41,13 +41,13 @@ struct HomeView: View {
                         NavigationLink {
                             ReminderListView(reminders: todayResults)
                         } label: {
-                            ReminderStatsView(icon: "calendar", title: "Today", count: reminderStatsValues.todayCount, iconColor: .pumpkin)
+                            ReminderStatsView(icon: "moon.stars.fill", title: "Tonight", count: reminderStatsValues.todayCount, iconColor: .pumpkin)
                         }
                         
                         NavigationLink {
                             ReminderListView(reminders: scheduledResults)
                         } label: {
-                            ReminderStatsView(icon: "calendar.badge.exclamationmark", title: "Scheduled", count: reminderStatsValues.scheduledCount, iconColor: .candleGlow)
+                            ReminderStatsView(icon: "eye.fill", title: "Lurking", count: reminderStatsValues.scheduledCount, iconColor: .candleGlow)
                         }
                     }
                     
@@ -56,17 +56,17 @@ struct HomeView: View {
                             ReminderListView(reminders: allResults)
                             
                         } label: {
-                            ReminderStatsView(icon: "tray.circle.fill", title: "All", count: reminderStatsValues.allCount, iconColor: .ember)
+                            ReminderStatsView(icon: "flame.fill", title: "All Haunts", count: reminderStatsValues.allCount, iconColor: .ember)
                         }
                         
                         NavigationLink {
                             ReminderListView(reminders: completedResults)
                         } label: {
-                            ReminderStatsView(icon: "checkmark.circle.fill", title: "Completed", count: reminderStatsValues.completedCount, iconColor: .boneWhite)
+                            ReminderStatsView(icon: "moon.zzz.fill", title: "Buried", count: reminderStatsValues.completedCount, iconColor: .boneWhite)
                         }
                     }
                     
-                    Text("My Lists")
+                    Text("My Cauldrons")
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .font(.largeTitle)
                         .bold()
@@ -78,7 +78,7 @@ struct HomeView: View {
                     Button {
                         isPresented = true
                     } label: {
-                        Text("Add List")
+                        Text("Brew a Cauldron")
                             .frame(maxWidth: .infinity, alignment: .trailing)
                             .font(.headline)
                     }.padding()
@@ -109,8 +109,8 @@ struct HomeView: View {
             }
             .padding()
             .background(Color.midnight.ignoresSafeArea())
-            .navigationTitle("Reminders")
-        }.searchable(text: $search)
+            .navigationTitle("Haunted Reminders")
+        }.searchable(text: $search, prompt: "Search the crypt")
     }
 }
 
