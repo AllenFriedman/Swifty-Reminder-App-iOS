@@ -10,10 +10,17 @@ import SwiftUI
 struct ReminderDetailView: View {
     @Environment(\.dismiss) private var dismiss
     @Binding var reminder: Reminder
-    @State var editConfig: ReminderEditConfig = .init()
+    @State private var editConfig: ReminderEditConfig
     
     private var isFormValid: Bool {
         !editConfig.title.isEmpty
+    }
+    
+    init(reminder: Binding<Reminder>) {
+        _reminder = reminder
+        // Load the saved values once. Reloading in onAppear flipped the date/time toggles,
+        // which reset them to now, and wiped edits when coming back from the list picker.
+        _editConfig = State(initialValue: ReminderEditConfig(reminder: reminder.wrappedValue))
     }
     
     var body: some View {
@@ -46,12 +53,12 @@ struct ReminderDetailView: View {
                         
                         Section {
                             NavigationLink {
-                                SelectListView(selectedList: $reminder.list)
+                                SelectListView(selectedList: $editConfig.list)
                             } label: {
                                 HStack {
                                     Text("List")
                                     Spacer()
-                                    Text(reminder.list!.name)
+                                    Text(editConfig.list?.name ?? "")
                                 }
                             }
                         }
@@ -66,8 +73,6 @@ struct ReminderDetailView: View {
                     }
                 }.listStyle(.insetGrouped)
                     .tint(Color.pumpkin)
-            }.onAppear {
-                editConfig = ReminderEditConfig(reminder: reminder)
             }
             .toolbar {
                 ToolbarItem(placement: .principal) {
@@ -78,14 +83,8 @@ struct ReminderDetailView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") {
                         do {
-                            let updated = try ReminderService.updateReminder(reminder: reminder, editConfig: editConfig)
-                                
-                            if updated {
-                                if reminder.reminderDate != nil || reminder.reminderTime != nil {
-                                    let userData = UserData(title: reminder.title, body: reminder.notes, time: reminder.reminderTime, date: reminder.reminderDate)
-                                    NotificationManager.scheduleNotification(userData: userData)
-                                }
-                            }
+                            // Also reschedules or cancels the reminder's notification
+                            _ = try ReminderService.updateReminder(reminder: reminder, editConfig: editConfig)
                         } catch {
                             print(error)
                         }

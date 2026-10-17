@@ -5,15 +5,9 @@
 //  Created by Aman Bind on 05/10/23.
 //
 
+import CoreData
 import Foundation
 import UserNotifications
-
-struct UserData {
-    let title: String?
-    let body: String?
-    let time: Date?
-    let date: Date?
-}
 
 enum NotificationManager {
     // Used when a reminder has no notes of its own
@@ -32,10 +26,21 @@ enum NotificationManager {
         "scream.wav",
     ]
 
-    static func scheduleNotification(userData: UserData) {
+    /// Schedules the reminder's notification, replacing any earlier one for the same reminder.
+    /// Removes it instead when the reminder is completed, has no date or time, or is in the past.
+    static func updateNotification(for reminder: Reminder) {
+        let identifier = identifier(for: reminder)
+        let notificationCenter = UNUserNotificationCenter.current()
+
+        guard !reminder.isCompleted,
+              let fireDate = fireDate(date: reminder.reminderDate, time: reminder.reminderTime) else {
+            notificationCenter.removePendingNotificationRequests(withIdentifiers: [identifier])
+            return
+        }
+
         let content = UNMutableNotificationContent()
-        content.title = "👻 " + (userData.title ?? "")
-        if let body = userData.body, !body.isEmpty {
+        content.title = "👻 " + (reminder.title ?? "")
+        if let body = reminder.notes, !body.isEmpty {
             content.body = body
         } else {
             content.body = spookyLines.randomElement() ?? ""
@@ -43,24 +48,13 @@ enum NotificationManager {
         if let sound = spookySounds.randomElement() {
             content.sound = UNNotificationSound(named: UNNotificationSoundName(sound))
         }
-        
-        var dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: userData.date ?? Date())
-        
-        if let reminderTime = userData.time {
-            let reminderDateTimeComponents = reminderTime.dateComponents
-            dateComponents.hour = reminderDateTimeComponents.hour
-            dateComponents.minute = reminderDateTimeComponents.minute
-        }
-        
-        let trigger = UNCalendarNotificationTrigger(
-            dateMatching: dateComponents, repeats: true)
-        
-        let uuidString = UUID().uuidString
-    
-        let request = UNNotificationRequest(identifier: uuidString,
+
+        let trigger = UNCalendarNotificationTrigger(dateMatching: fireDate.dateComponents, repeats: false)
+
+        // Reusing the reminder's identifier replaces its pending notification instead of adding another
+        let request = UNNotificationRequest(identifier: identifier,
                                             content: content, trigger: trigger)
-        
-        let notificationCenter = UNUserNotificationCenter.current()
+
         notificationCenter.add(request) { error in
             if error != nil {
                 // Handle any errors.
@@ -69,5 +63,35 @@ enum NotificationManager {
                 print("Reminder Added")
             }
         }
+    }
+
+    static func cancelNotification(for reminder: Reminder) {
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [identifier(for: reminder)])
+    }
+
+    private static func identifier(for reminder: Reminder) -> String {
+        reminder.objectID.uriRepresentation().absoluteString
+    }
+
+    /// When the reminder should go off: its date at its time. A time with no date means the
+    /// next time that time comes round. Returns nil when there's nothing in the future to schedule.
+    private static func fireDate(date: Date?, time: Date?) -> Date? {
+        guard date != nil || time != nil else { return nil }
+
+        let calendar = Calendar.current
+        let now = Date()
+        var dateComponents = (date ?? now).dateComponents
+
+        if let time {
+            let timeComponents = time.dateComponents
+            dateComponents.hour = timeComponents.hour
+            dateComponents.minute = timeComponents.minute
+        }
+
+        guard var fireDate = calendar.date(from: dateComponents) else { return nil }
+        if date == nil, fireDate <= now {
+            fireDate = calendar.date(byAdding: .day, value: 1, to: fireDate) ?? fireDate
+        }
+        return fireDate > now ? fireDate : nil
     }
 }

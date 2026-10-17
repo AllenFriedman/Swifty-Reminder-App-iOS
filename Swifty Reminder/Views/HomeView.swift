@@ -105,6 +105,11 @@ struct HomeView: View {
                     .opacity(searching ? 1.0 : 0.0)
             })
             .onAppear {
+                todayResults.nsPredicate = ReminderService.remindersByStatType(statType: .today).predicate
+                reminderStatsValues = reminderStats.build(myListResults: myListResults)
+            }
+            .onReceive(NotificationCenter.default.publisher(for: .NSCalendarDayChanged).receive(on: RunLoop.main)) { _ in
+                todayResults.nsPredicate = ReminderService.remindersByStatType(statType: .today).predicate
                 reminderStatsValues = reminderStats.build(myListResults: myListResults)
             }
             .padding()
