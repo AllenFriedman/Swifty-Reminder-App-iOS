@@ -16,7 +16,7 @@ struct MyListsView: View {
             
             if myLists.isEmpty {
                 Spacer()
-                Text("No haunts here... yet 👻")
+                Text("No reminders found")
             } else {
                 ForEach(myLists) { myList in
                     NavigationLink(value: myList) {

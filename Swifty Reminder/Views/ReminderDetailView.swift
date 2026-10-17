@@ -21,8 +21,8 @@ struct ReminderDetailView: View {
             VStack {
                 List {
                     Section {
-                        TextField("What haunts you?", text: $editConfig.title)
-                        TextField("Whispers from beyond", text: $editConfig.notes ?? "")
+                        TextField("Title", text: $editConfig.title)
+                        TextField("Notes", text: $editConfig.notes ?? "")
                     }
                     
                     Section {
@@ -32,7 +32,7 @@ struct ReminderDetailView: View {
                         }
                         
                         if editConfig.hasDate {
-                            DatePicker("Night of Doom", selection: $editConfig.reminderDate ?? Date(), displayedComponents: .date)
+                            DatePicker("Select Date", selection: $editConfig.reminderDate ?? Date(), displayedComponents: .date)
                         }
                         
                         Toggle(isOn: $editConfig.hasTime) {
@@ -41,7 +41,7 @@ struct ReminderDetailView: View {
                         }
                         
                         if editConfig.hasTime {
-                            DatePicker("Witching Hour", selection: $editConfig.reminderTime ?? Date(), displayedComponents: .hourAndMinute)
+                            DatePicker("Select Date", selection: $editConfig.reminderTime ?? Date(), displayedComponents: .hourAndMinute)
                         }
                         
                         Section {
@@ -49,7 +49,7 @@ struct ReminderDetailView: View {
                                 SelectListView(selectedList: $reminder.list)
                             } label: {
                                 HStack {
-                                    Text("Cauldron")
+                                    Text("List")
                                     Spacer()
                                     Text(reminder.list!.name)
                                 }
@@ -71,12 +71,12 @@ struct ReminderDetailView: View {
             }
             .toolbar {
                 ToolbarItem(placement: .principal) {
-                    Text("Haunt Details")
+                    Text("Details")
                         .foregroundColor(.pumpkin)
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Cast") {
+                    Button("Done") {
                         do {
                             let updated = try ReminderService.updateReminder(reminder: reminder, editConfig: editConfig)
                                 
@@ -94,7 +94,7 @@ struct ReminderDetailView: View {
                 }
                 
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Flee") {
+                    Button("Cancel") {
                         dismiss()
                     }
                 }

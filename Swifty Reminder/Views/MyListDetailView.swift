@@ -31,16 +31,16 @@ struct MyListDetailView: View {
             
             HStack {
                 Image(systemName: "wand.and.stars")
-                Button("Summon a Haunt") {
+                Button("New Reminder") {
                     openAddReminder = true
                 }
             }.foregroundColor(.pumpkin)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding()
-        }.alert("Summon a Haunt", isPresented: $openAddReminder) {
-            TextField("What haunts you?", text: $title)
-            Button("Flee", role: .cancel) {}
-            Button("Summon") {
+        }.alert("New Reminder", isPresented: $openAddReminder) {
+            TextField("", text: $title)
+            Button("Cancel", role: .cancel) {}
+            Button("Done") {
                 if isFormValid {
                     do {
                         try ReminderService.saveReminderToMyList(myList: myList, reminderTitle: title)
