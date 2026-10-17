@@ -26,11 +26,11 @@ enum NotificationManager {
         "scream.wav",
     ]
 
-    // Follow-ups after the reminder goes off, getting pushier while it stays unfinished
-    private static let nags: [(after: TimeInterval, title: String, body: String)] = [
-        (60 * 60, "👻 Still haunting you", "It's overdue. Do it before it gets worse..."),
-        (24 * 60 * 60, "👻👻 The ghost is getting restless", "A whole day overdue. Can you hear the chains rattling?"),
-        (3 * 24 * 60 * 60, "☠️ The spirits are furious", "Three days overdue! Finish it so it can rest in peace."),
+    // Follow-ups after the reminder goes off, getting pushier (and louder) while it stays unfinished
+    private static let nags: [(after: TimeInterval, sound: String, title: String, body: String)] = [
+        (60 * 60, "witch_laugh.wav", "👻 Still haunting you", "It's overdue. Do it before it gets worse..."),
+        (24 * 60 * 60, "dracula.wav", "👻👻 The ghost is getting restless", "A whole day overdue. Can you hear the chains rattling?"),
+        (3 * 24 * 60 * 60, "scream.wav", "☠️ The spirits are furious", "Three days overdue! Finish it so it can rest in peace."),
     ]
 
     /// Schedules the reminder's notification, replacing any earlier one for the same reminder.
@@ -84,9 +84,7 @@ enum NotificationManager {
             let content = UNMutableNotificationContent()
             content.title = nag.title + ": " + (reminder.title ?? "")
             content.body = nag.body
-            if let sound = spookySounds.randomElement() {
-                content.sound = UNNotificationSound(named: UNNotificationSoundName(sound))
-            }
+            content.sound = UNNotificationSound(named: UNNotificationSoundName(nag.sound))
             let nagDate = fireDate.addingTimeInterval(nag.after)
             let trigger = UNCalendarNotificationTrigger(dateMatching: nagDate.dateComponents, repeats: false)
             let request = UNNotificationRequest(identifier: "\(base)-nag\(index + 1)", content: content, trigger: trigger)
