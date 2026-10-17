@@ -16,6 +16,7 @@ class ReminderService {
     
     static func save() throws {
         try viewContext.save()
+        WidgetUpdater.refresh()
     }
     
     static func saveMyList(_ name: String, _ color: UIColor) throws {

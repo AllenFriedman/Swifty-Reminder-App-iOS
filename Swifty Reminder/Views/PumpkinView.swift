@@ -7,25 +7,7 @@
 
 import SwiftUI
 
-/// A list's pumpkin: it rots as unfinished reminders pile up, and lights up once they're all done.
-struct ListPumpkinIcon: View {
-    private let color: Color
-    @FetchRequest private var openReminders: FetchedResults<Reminder>
-
-    init(myList: MyList) {
-        color = Color(myList.color)
-        _openReminders = FetchRequest(fetchRequest: ReminderService.getRemindersByList(myList: myList))
-    }
-
-    var body: some View {
-        PumpkinBadge(color: color, rot: Self.rot(forOpenCount: openReminders.count), lit: openReminders.isEmpty)
-    }
-
-    /// Fresh with 1–2 reminders left, going off from 3, fully rotten at 7 or more
-    static func rot(forOpenCount count: Int) -> Double {
-        min(1, max(0, Double(count - 2) / 5))
-    }
-}
+// Shared with the widget, so this file only draws: no Core Data here.
 
 /// A pumpkin inside a ring of the list's colour
 struct PumpkinBadge: View {
@@ -58,6 +40,11 @@ struct PumpkinView: View {
     var lit: Bool
 
     @State private var flicker = false
+
+    /// Fresh with 1–2 reminders left, going off from 3, fully rotten at 7 or more
+    static func rot(forOpenCount count: Int) -> Double {
+        min(1, max(0, Double(count - 2) / 5))
+    }
 
     var body: some View {
         GeometryReader { geo in

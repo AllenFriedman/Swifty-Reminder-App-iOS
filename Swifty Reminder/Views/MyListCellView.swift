@@ -24,6 +24,21 @@ struct MyListCellView: View {
     }
 }
 
+/// A list's pumpkin: it rots as unfinished reminders pile up, and lights up once they're all done.
+struct ListPumpkinIcon: View {
+    private let color: Color
+    @FetchRequest private var openReminders: FetchedResults<Reminder>
+
+    init(myList: MyList) {
+        color = Color(myList.color)
+        _openReminders = FetchRequest(fetchRequest: ReminderService.getRemindersByList(myList: myList))
+    }
+
+    var body: some View {
+        PumpkinBadge(color: color, rot: PumpkinView.rot(forOpenCount: openReminders.count), lit: openReminders.isEmpty)
+    }
+}
+
 struct MyListCellView_Previews: PreviewProvider {
     static var previews: some View {
         MyListCellView(myList: PreviewData.myList)
