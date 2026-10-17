@@ -22,6 +22,9 @@ struct Swifty_ReminderApp: App {
             }
         }
 
+        // Copy any reminders that aren't in Apple's Reminders app yet (only once access has been given)
+        RemindersSyncManager.copyMissingReminders()
+
         // Halloween theme: pumpkin-orange navigation titles
         let pumpkin = UIColor(Color.pumpkin)
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: pumpkin]

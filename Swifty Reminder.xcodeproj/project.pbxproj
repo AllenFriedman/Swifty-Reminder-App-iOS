@@ -41,6 +41,7 @@
 		5CF0A1002EF0000000000009 /* BatFlyoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF0A1002EF0000000000008 /* BatFlyoverView.swift */; };
 		5CF0A1002EF000000000000B /* BatFlightPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF0A1002EF000000000000A /* BatFlightPath.swift */; };
 		5CF0A1002EF000000000000D /* BatFlight in Resources */ = {isa = PBXBuildFile; fileRef = 5CF0A1002EF000000000000C /* BatFlight */; };
+		5CF0A1002EF000000000000F /* RemindersSyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF0A1002EF000000000000E /* RemindersSyncManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,8 @@
 		5CF0A1002EF0000000000008 /* BatFlyoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatFlyoverView.swift; sourceTree = "<group>"; };
 		5CF0A1002EF000000000000A /* BatFlightPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatFlightPath.swift; sourceTree = "<group>"; };
 		5CF0A1002EF000000000000C /* BatFlight */ = {isa = PBXFileReference; lastKnownFileType = folder; path = BatFlight; sourceTree = "<group>"; };
+		5CF0A1002EF000000000000E /* RemindersSyncManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersSyncManager.swift; sourceTree = "<group>"; };
+		5CF0A1002EF0000000000010 /* RemindersModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "RemindersModel 2.xcdatamodel"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				5CAB3A082ACF143700634047 /* NotificationManager.swift */,
+				5CF0A1002EF000000000000E /* RemindersSyncManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -432,6 +436,7 @@
 				5C581F532AB49C11006F94D1 /* CoreDataProvider.swift in Sources */,
 				5C581F702AB8ACDC006F94D1 /* ReminderListView.swift in Sources */,
 				5CAB3A092ACF143700634047 /* NotificationManager.swift in Sources */,
+				5CF0A1002EF000000000000F /* RemindersSyncManager.swift in Sources */,
 				5C581F682AB73B50006F94D1 /* MyListView.swift in Sources */,
 				5C581F632AB731A0006F94D1 /* ReminderService.swift in Sources */,
 			);
@@ -595,6 +600,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Scary Calendar 🧙‍♀️";
+				INFOPLIST_KEY_NSRemindersFullAccessUsageDescription = "Scary Calendar copies your reminders into its own list in the Reminders app.";
+				INFOPLIST_KEY_NSRemindersUsageDescription = "Scary Calendar copies your reminders into its own list in the Reminders app.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -625,6 +632,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Scary Calendar 🧙‍♀️";
+				INFOPLIST_KEY_NSRemindersFullAccessUsageDescription = "Scary Calendar copies your reminders into its own list in the Reminders app.";
+				INFOPLIST_KEY_NSRemindersUsageDescription = "Scary Calendar copies your reminders into its own list in the Reminders app.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -765,8 +774,9 @@
 			isa = XCVersionGroup;
 			children = (
 				5C581F552AB58E52006F94D1 /* RemindersModel.xcdatamodel */,
+				5CF0A1002EF0000000000010 /* RemindersModel 2.xcdatamodel */,
 			);
-			currentVersion = 5C581F552AB58E52006F94D1 /* RemindersModel.xcdatamodel */;
+			currentVersion = 5CF0A1002EF0000000000010 /* RemindersModel 2.xcdatamodel */;
 			path = RemindersModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

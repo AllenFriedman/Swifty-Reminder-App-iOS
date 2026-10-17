@@ -38,11 +38,13 @@ class ReminderService {
         
         try save()
         NotificationManager.updateNotification(for: reminderToUpdate)
+        RemindersSyncManager.updateAppleReminder(for: reminderToUpdate)
         return true
     }
     
     static func deleteReminder(_ reminder: Reminder) throws {
         NotificationManager.cancelNotification(for: reminder)
+        RemindersSyncManager.deleteAppleReminder(for: reminder)
         viewContext.delete(reminder)
         try save()
     }
@@ -59,6 +61,7 @@ class ReminderService {
         reminder.title = reminderTitle
         myList.addToReminders(reminder)
         try save()
+        RemindersSyncManager.updateAppleReminder(for: reminder)
     }
     
     static func remindersByStatType(statType: ReminderStatType) -> NSFetchRequest<Reminder> {
