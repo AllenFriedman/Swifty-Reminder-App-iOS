@@ -62,7 +62,7 @@ struct HomeView: View {
                         NavigationLink {
                             ReminderListView(reminders: completedResults)
                         } label: {
-                            ReminderStatsView(icon: "moon.zzz.fill", title: "Completed", count: reminderStatsValues.completedCount, iconColor: .boneWhite)
+                            ReminderStatsView(icon: "moon.zzz.fill", title: "Completed", count: reminderStatsValues.completedCount, iconColor: .pumpkin)
                         }
                     }
                     
