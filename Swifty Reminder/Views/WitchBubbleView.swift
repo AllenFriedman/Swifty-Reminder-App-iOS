@@ -10,6 +10,7 @@ import SwiftUI
 /// Hexelda's speech bubble, which drops in from the top when she taunts you. Tap it to chat back.
 struct WitchBubbleView: View {
     @ObservedObject private var witch = WitchTaunter.shared
+    @Environment(\.scenePhase) private var scenePhase
     @State private var showingChat = false
 
     var body: some View {
@@ -23,6 +24,17 @@ struct WitchBubbleView: View {
         .animation(.spring(response: 0.4, dampingFraction: 0.8), value: witch.bubble != nil)
         .sheet(isPresented: $showingChat) {
             HexeldaChatView()
+        }
+        .task {
+            // Greet on launch, once the home screen has had a moment to appear
+            try? await Task.sleep(for: .seconds(1.5))
+            witch.greet()
+        }
+        .onChange(of: scenePhase) { phase in
+            // ...and when coming back to the app (at most every 10 minutes)
+            if phase == .active {
+                witch.greet()
+            }
         }
     }
 

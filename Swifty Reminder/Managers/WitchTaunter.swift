@@ -15,6 +15,7 @@ final class WitchTaunter: ObservableObject {
     static let shared = WitchTaunter()
 
     enum Event {
+        case appOpened
         case listCreated(name: String)
         case reminderAdded(title: String, listName: String)
         case timerStarted(label: String, minutes: Int)
@@ -39,8 +40,11 @@ final class WitchTaunter: ObservableObject {
     private static let apiKeyAccount = "gemmaAPIKey"
     /// Only ask Gemma for a taunt this often; in between she uses her book of taunts
     private static let aiCooldown: TimeInterval = 20
+    /// Only greet the user this often when they come back to the app
+    private static let greetingCooldown: TimeInterval = 10 * 60
 
     private var lastAICall = Date.distantPast
+    private var lastGreeting = Date.distantPast
     private var hideTask: Task<Void, Never>?
 
     private init() {
@@ -59,6 +63,13 @@ final class WitchTaunter: ObservableObject {
     }
 
     // MARK: - Taunts
+
+    /// Call from the main thread when the app opens or comes back to the foreground.
+    func greet() {
+        guard Date().timeIntervalSince(lastGreeting) > Self.greetingCooldown else { return }
+        lastGreeting = Date()
+        react(to: .appOpened)
+    }
 
     /// Call from the main thread right after the user makes something.
     func react(to event: Event) {
@@ -91,7 +102,7 @@ final class WitchTaunter: ObservableObject {
 
     @MainActor
     private func taunt(for event: Event, open: Int, overdue: Int) async -> String {
-        let fallback = Self.bookTaunt(for: event, overdue: overdue)
+        let fallback = Self.bookTaunt(for: event, open: open, overdue: overdue)
         guard let client, Date().timeIntervalSince(lastAICall) > Self.aiCooldown else { return fallback }
         lastAICall = Date()
 
@@ -135,6 +146,8 @@ final class WitchTaunter: ObservableObject {
 
     private static func describe(_ event: Event) -> String {
         switch event {
+        case .appOpened:
+            return "The user just opened the app."
         case let .listCreated(name):
             return "The user just created a new to-do list called \"\(name)\"."
         case let .reminderAdded(title, listName):
@@ -165,11 +178,32 @@ final class WitchTaunter: ObservableObject {
 
     // MARK: - The book of taunts (used without a key, offline, or between Gemma calls)
 
-    private static func bookTaunt(for event: Event, overdue: Int) -> String {
+    private static func bookTaunt(for event: Event, open: Int, overdue: Int) -> String {
+        if case .appOpened = event {
+            if open == 0 {
+                return [
+                    "Nothing left to do? Suspicious, mortal. Very suspicious.",
+                    "An empty cauldron! Don't get comfortable, dearie. I'll be watching.",
+                ].randomElement()!
+            }
+            if overdue > 0 {
+                return [
+                    "Back again? \(overdue) overdue \(overdue == 1 ? "reminder has" : "reminders have") been haunting this place while you were gone.",
+                    "Welcome back, mortal. Your \(overdue) overdue \(overdue == 1 ? "reminder is" : "reminders are") rattling their chains for you. Hehehe!",
+                ].randomElement()!
+            }
+            return [
+                "Oh, it's YOU again. Shall we watch you procrastinate together?",
+                "Welcome back, dearie. \(open) \(open == 1 ? "reminder is" : "reminders are") waiting... and so am I. Hehehe!",
+                "Back so soon? The bats said you'd never get anything done today.",
+            ].randomElement()!
+        }
         if overdue > 2, Bool.random() {
             return "\(overdue) overdue reminders already haunt you, and you're adding more? Hehehe, the ghosts are thrilled."
         }
         switch event {
+        case .appOpened:
+            return ""  // handled above
         case let .listCreated(name):
             return [
                 "A new list called “\(name)”? I give it a week before it rots like last year's pumpkin.",
